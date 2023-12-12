@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="top">
+    <button
+      #parent
+      class="parent"
+      (click)="clickOnParent()"
+      [ngClass]="{ selected: selectedElement === currentNode?.number }"
+    >
+      <span class="parent-number">{{ currentNode?.number }}:</span>
+      <div class="parent-properties">
+        <span>
+          {{ whichDataType() }}
+          {{ currentNode?.comparison | comparisonToSign }}
+          {{ currentNode?.data_value }}</span
+        >
+        <span>{{ currentNode?.display_name }}</span>
+      </div>
+    </button>
+  </div>
+  <div class="leafs">
+    <div class="leaf">
+      <button
+        #leftleaf
+        class="left-leaf"
+        *ngIf="leftLeaf"
+        (click)="clickOnLeaf('left')"
+        [ngClass]="{
+          selected: selectedElement === leftLeaf.number,
+          green: leftLeaf.color === 1,
+          red: leftLeaf.color === 2
+        }"
+      >
+        {{ leftLeaf.number }}: {{ shortenText(leftLeaf.display_name) }}
+      </button>
+      <div class="new-buttons button-left" *ngIf="!leftLeaf && !leftNode">
+        <span #leftleaf>"false"</span>
+        <button (click)="newLeaf(false)">+ Blatt</button>
+        <button (click)="newNode(false)">+ Knoten</button>
+      </div>
+    </div>
+    <div class="leaf">
+      <button
+        #rightleaf
+        class="right-leaf"
+        *ngIf="rightLeaf"
+        (click)="clickOnLeaf('right')"
+        [ngClass]="{
+          selected: selectedElement === rightLeaf.number,
+          green: rightLeaf.color === 1,
+          red: rightLeaf.color === 2
+        }"
+      >
+        {{ rightLeaf.number }}: {{ shortenText(rightLeaf.display_name) }}
+      </button>
+      <div class="new-buttons button-right" *ngIf="!rightNode && !rightLeaf">
+        <span #rightleaf>"true"</span>
+        <button (click)="newLeaf(true)">+ Blatt</button>
+        <button (click)="newNode(true)">+ Knoten</button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="children"
+    [ngClass]="{
+      'both-nodes': leftNode !== undefined && rightNode !== undefined
+    }"
+  >
+    <div class="left" *ngIf="leftNode">
+      <app-tree-element
+        #leftnode
+        [currentNodeNum]="leftNode.number"
+      ></app-tree-element>
+    </div>
+    <div class="right" *ngIf="rightNode">
+      <app-tree-element
+        #rightnode
+        [currentNodeNum]="rightNode.number"
+      ></app-tree-element>
+    </div>
+  </div>
+  <svg
+    style="
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    "
+  >
+    <polyline
+      *ngFor="let item of polylines"
+      [attr.points]="item.points"
+      [attr.fill]="item.fill"
+      [attr.stroke]="item.stroke"
+      [attr.stroke-width]="item.strokeWidth"
+    />
+  </svg>
+</div>

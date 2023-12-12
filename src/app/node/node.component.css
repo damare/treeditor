@@ -1,0 +1,31 @@
+.node-card {
+  max-width: 450px;
+  margin-right: 1em;
+}
+
+.node-card > div {
+  margin-bottom: 0.5em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.node-card p {
+  margin: 0;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+}
+
+.start-value {
+  display: none;
+}
+
+.data-value-label {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

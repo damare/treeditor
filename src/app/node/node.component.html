@@ -1,0 +1,242 @@
+<mat-card class="node-card" *ngIf="node">
+  <div class="head">
+    <h2>Knoten {{ node.number }}</h2>
+    <button [disabled]="node.number === 1" (click)="onChangeNodeToLeaf()">
+      -> Blatt
+    </button>
+    <button [disabled]="node.number === 1" (click)="onNodeDelete()">
+      löschen
+    </button>
+    <button (click)="closeCard()">x</button>
+  </div>
+  <div>
+    <label for="node-number">Nummer des Knoten: </label>
+    <input
+      id="node-number"
+      [ngModel]="node.number"
+      disabled
+      placeholder="number"
+    />
+  </div>
+  <div>
+    <label for="node-display_name">Anzeigename: </label>
+    <input
+      id="node-display_name"
+      [ngModel]="node.display_name"
+      (ngModelChange)="onNodeNameChange($event)"
+      placeholder="number"
+    />
+  </div>
+  <div>
+    <label for="node-description">Beschreibung: </label>
+    <input
+      id="node-description"
+      [ngModelOptions]="{ updateOn: 'blur' }"
+      [ngModel]="node.description"
+      (ngModelChange)="onNodeDescriptionChange($event)"
+      placeholder="description"
+    />
+  </div>
+  <div>
+    <label for="node-data_type">Datentyp:</label>
+    <select
+      id="node-data_type"
+      class="form-control"
+      (ngModelChange)="onNodeDataTypeChange($event)"
+      [ngModel]="node.data_type"
+    >
+      <option value="" disabled selected="selected">Datentyp</option>
+      <option
+        *ngFor="let element of dataTypes | keyvalue"
+        [ngValue]="element.value.id"
+      >
+        {{ element.value.display_name }} ({{ element.value.name }})
+      </option>
+    </select>
+  </div>
+  <div>
+    <label for="node-comparison">Vergleichsart:</label>
+    <select
+      id="node-comparison"
+      class="form-control"
+      (ngModelChange)="onNodeComparisonChange($event)"
+      [ngModel]="node.comparison"
+    >
+      <option value="" selected="selected">Vergleichsart</option>
+      <option
+        *ngFor="let comparison of comparisonChoice"
+        value="{{ comparison.value }}"
+      >
+        {{ comparison.viewValue }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <label class="data-value-label"
+      >Vergleichswert:
+      <input
+        *ngIf="!dataTypes.get(node.data_type)"
+        id="node-data_value"
+        class="start-value"
+        type="text"
+      />
+      <span *ngIf="!dataTypes.get(node.data_type)"
+        ><i>wähle zuerst einen Datentyp aus!</i></span
+      >
+      <!-- === STR === -->
+      <input
+        *ngIf="
+          dataTypes.get(node.data_type) &&
+          dataTypes.get(node.data_type)?.kind_of_data === 'STR'
+        "
+        id="node-data_value"
+        [ngModel]="node.data_value"
+        (ngModelChange)="onNodeDataValueChange($event)"
+        placeholder="Text"
+      />
+      <!-- === BOOL === -->
+      <input
+        *ngIf="
+          dataTypes.get(node.data_type) &&
+          dataTypes.get(node.data_type)?.kind_of_data === 'BOOL'
+        "
+        name="node-data_value"
+        type="radio"
+        [value]="true"
+        [ngModel]="node.data_value"
+        (ngModelChange)="onNodeDataValueChange($event)"
+      />
+      <span
+        *ngIf="
+          dataTypes.get(node.data_type) &&
+          dataTypes.get(node.data_type)?.kind_of_data === 'BOOL'
+        "
+        >true</span
+      >
+      <input
+        *ngIf="
+          dataTypes.get(node.data_type) &&
+          dataTypes.get(node.data_type)?.kind_of_data === 'BOOL'
+        "
+        name="node-data_value"
+        type="radio"
+        [value]="false"
+        [ngModel]="node.data_value"
+        (ngModelChange)="onNodeDataValueChange($event)"
+      />
+      <span
+        *ngIf="
+          dataTypes.get(node.data_type) &&
+          dataTypes.get(node.data_type)?.kind_of_data === 'BOOL'
+        "
+        >false</span
+      >
+      <!-- === INT === -->
+      <input
+        *ngIf="
+          dataTypes.get(node.data_type) &&
+          dataTypes.get(node.data_type)?.kind_of_data === 'INT'
+        "
+        id="node-data_value"
+        [ngModel]="node.data_value"
+        (ngModelChange)="onNodeDataValueChange($event)"
+        placeholder="ganze Zahl"
+      />
+    </label>
+  </div>
+  <div>
+    <label for="node-explanation">Erklärung: </label>
+    <textarea
+      id="node-explanation"
+      [ngModelOptions]="{ updateOn: 'blur' }"
+      [ngModel]="node.explanation"
+      (ngModelChange)="onNodeExplanationChange($event)"
+      placeholder="explanation"
+    ></textarea>
+  </div>
+  <div>
+    <label for="node-true_number">Nachfolger Vergleich "True": </label>
+    <select
+      id="node-true_number"
+      class="form-control"
+      (ngModelChange)="onNodeTrueSuccChange($event)"
+      [ngModel]="node.true_number"
+    >
+      <option value="" disabled selected="selected">
+        Nachfolger Vergleich "True"
+      </option>
+      <option *ngFor="let choose of successors | async" [ngValue]="choose[0]">
+        {{ choose[0] + " - " + choose[1] }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <label for="node-true_explanation">Erklärung "True"-Nachfolger: </label>
+    <textarea
+      id="node-true_explanation"
+      [ngModelOptions]="{ updateOn: 'blur' }"
+      [ngModel]="node.true_explanation"
+      (ngModelChange)="onNodeTrueExplanationChange($event)"
+      placeholder="true_explanation"
+    ></textarea>
+  </div>
+  <div>
+    <label for="node-true_color">Farbe "True"-Nachfolger:</label>
+    <select
+      id="node-true_color"
+      class="form-control"
+      (ngModelChange)="onNodeTrueColorChange($event)"
+      [ngModel]="node.true_color"
+    >
+      <option value="" disabled selected="selected">
+        Farbe "True"-Nachfolger
+      </option>
+      <option *ngFor="let color of colors | async" [ngValue]="color.id">
+        {{ color.name }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <label for="node-false_number">Nachfolger Vergleich "False": </label>
+    <select
+      id="node-false_number"
+      class="form-control"
+      (ngModelChange)="onNodeFalseSuccChange($event)"
+      [ngModel]="node.false_number"
+    >
+      <option value="" disabled selected="selected">
+        Nachfolger Vergleich "False"
+      </option>
+      <option *ngFor="let choose of successors | async" [ngValue]="choose[0]">
+        {{ choose[0] + " - " + choose[1] }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <label for="node-false_explanation">Erklärung "False"-Nachfolger: </label>
+    <textarea
+      id="node-false_explanation"
+      [ngModelOptions]="{ updateOn: 'blur' }"
+      [ngModel]="node.false_explanation"
+      (ngModelChange)="onNodeFalseExplanationChange($event)"
+      placeholder="false_explanation"
+    ></textarea>
+  </div>
+  <div>
+    <label for="node-false_color">Farbe "False"-Nachfolger:</label>
+    <select
+      id="node-false_color"
+      class="form-control"
+      (ngModelChange)="onNodeFalseColorChange($event)"
+      [ngModel]="node.false_color"
+    >
+      <option value="" disabled selected="selected">
+        Farbe "False"-Nachfolger
+      </option>
+      <option *ngFor="let color of colors | async" value="{{ color.id }}">
+        {{ color.name }}
+      </option>
+    </select>
+  </div>
+</mat-card>
+<br />

@@ -1,0 +1,45 @@
+button {
+  padding: 0.5em;
+  margin-right: 0.5em;
+  cursor: pointer;
+  background-color: lightgrey;
+  border: 1px solid black;
+  border-radius: 0.5em;
+}
+
+button:hover {
+  background-color: grey;
+  color: white;
+}
+
+fa-icon {
+  margin-right: 0.5em;
+}
+
+.tree-finder, .tree {
+  margin: 1em;
+}
+
+.tree-finder > input {
+  padding: 0.5em;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.cards > h3 {
+  width: 100%;
+}
+
+.save-tree-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.save-tree-creator > input {
+  margin-left: 0.5em;
+}

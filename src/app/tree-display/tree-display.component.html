@@ -1,0 +1,11 @@
+<div class="tree-container" *ngIf="tree !== undefined">
+  <app-tree-element [currentNodeNum]="root!.number"></app-tree-element>
+</div>
+<div class="tree-element-editor" *ngIf="selectedNumber !== 0">
+  <div *ngIf="selectedNode">
+    <app-node></app-node>
+  </div>
+  <div *ngIf="selectedLeaf">
+    <app-leaf></app-leaf>
+  </div>
+</div>

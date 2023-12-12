@@ -1,0 +1,126 @@
+button {
+  margin: 0;
+}
+
+button:hover {
+  cursor:pointer;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+}
+
+.children {
+  display: flex;
+  margin-top: 0.75em;
+}
+
+.parent, .left-leaf, .right-leaf {
+  border: 2px solid grey;
+  padding: 0.5em;
+}
+
+.parent {
+  background-color: #0F81A4;
+  border-color: #0F81A4;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.parent-number {
+  font-weight: bold;
+}
+
+.parent-properties {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.leafs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-buttons {
+  flex-direction: column;
+  display: flex;
+  margin-top: 5px;
+}
+
+.new-buttons>span {
+  text-align: center;
+  margin-bottom: 5px;
+  padding-top: 15px;
+}
+
+.button-left {
+  padding-right: 10px;
+}
+
+.button-right {
+  padding-left: 10px;
+}
+
+.right-leaf, .left-leaf {
+  border-radius: 0.5em;
+  margin-right: 0.5em;
+  margin-top: 0.5em;
+  background-color: #7cc2db;
+  border-color: #7cc2db;
+}
+
+.left-leaf {
+  margin-right: 50px;
+}
+
+.right-leaf {
+  margin-left: 50px;
+}
+
+.test {
+  left: -20%;
+  top: -65%;
+  transform: rotate(30deg);
+}
+
+.leaf {
+  min-width: 100px;
+  max-width: 200px;
+}
+
+.top.selected {
+  background-color: #b86b00;
+  border-color: #663C00;
+  color: white;
+}
+
+.leaf > .selected,
+.top > .selected {
+  border-color: #0A3463;
+}
+
+.red {
+  background-color: #F6A43D;
+  border-color: #F6A43D;
+  color: black;
+}
+
+.green {
+  background-color: #42A47B;
+  border-color: #42A47B;
+  color: black;
+}

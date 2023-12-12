@@ -1,0 +1,21 @@
+.leaf-card {
+  max-width: 450px;
+  margin-right: 1em;
+}
+
+.leaf-card > div {
+  margin-bottom: 0.5em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.leaf-card p {
+  margin: 0;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+}

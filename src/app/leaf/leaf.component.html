@@ -1,0 +1,54 @@
+<mat-card class="leaf-card" *ngIf="leaf">
+  <div class="head">
+    <h2>Blatt {{ leaf.number }}</h2>
+    <button (click)="onChangeLeafToNode()">-> Knoten</button>
+    <button (click)="onDeleteLeaf()">löschen</button>
+    <button (click)="closeCard()">x</button>
+  </div>
+  <div>
+    <label for="leaf-number">Nummer des Blatts: </label>
+    <input
+      id="leaf-number"
+      [ngModel]="leaf.number"
+      disabled
+      placeholder="number"
+    />
+  </div>
+  <div>
+    <label for="leaf-display_name">Ergebnis: </label>
+    <input
+      id="leaf-display_name"
+      [ngModel]="leaf.display_name"
+      (ngModelChange)="onLeafDisplayNameChange($event)"
+      placeholder="number"
+    />
+  </div>
+  <div>
+    <label for="leaf-result">Endergebnis des Baums:</label>
+    <select
+      id="leaf-result"
+      class="form-control"
+      (ngModelChange)="onLeafResultChange($event)"
+      [ngModel]="leaf.result"
+    >
+      <option value="" disabled selected="selected">Endergebnis Baum?</option>
+      <option value="{{ true }}">Ja</option>
+      <option value="{{ false }}">Nein</option>
+    </select>
+  </div>
+  <div>
+    <label for="leaf-color">Farbe: </label>
+    <select
+      id="leaf-color"
+      class="form-control"
+      (ngModelChange)="onLeafColorChange($event)"
+      [ngModel]="leaf.color"
+    >
+      <option value="" disabled selected="selected">Color</option>
+      <option *ngFor="let color of colors | async" [ngValue]="color.id">
+        {{ color.name }}
+      </option>
+    </select>
+  </div>
+</mat-card>
+<br />

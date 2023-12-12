@@ -4,6 +4,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
@@ -17,19 +18,34 @@ import { treesReducer } from './store/trees/trees.reducer';
 import { FilterTreeKindsPipe } from './pipes/filter-tree-kinds.pipe';
 import { NewTreeKindComponent } from './new-tree-kind/new-tree-kind.component';
 import { EditorEffects } from './store/editor.effects';
-import { HttpClientModule } from '@angular/common/http';
 import { treeKindsReducer } from './store/tree-kinds/tree-kinds.reducer';
 import { colorReducer } from './store/colors/colors.reducer';
 import { dataTypesReducer } from './store/data-types/data-types.reducer';
 import { DataTypesComponent } from './data-types/data-types.component';
+import { EditorComponent } from './editor/editor.component';
+import { TreeDisplayComponent } from './tree-display/tree-display.component';
+import { LeafComponent } from './leaf/leaf.component';
+import { NodeComponent } from './node/node.component';
+import { TreeElementComponent } from './tree-element/tree-element.component';
+import { LostElementsComponent } from './lost-elements/lost-elements.component';
+import { IsNodePipe } from './pipes/is-node.pipe';
+import { ComparisonToSignPipe } from './pipes/comparison-to-sign.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TreesComponent,
+    ComparisonToSignPipe,
     FilterTreeKindsPipe,
+    IsNodePipe,
     NewTreeKindComponent,
     DataTypesComponent,
+    EditorComponent,
+    TreeDisplayComponent,
+    LeafComponent,
+    NodeComponent,
+    TreeElementComponent,
+    LostElementsComponent,
   ],
   imports: [
     BrowserModule,

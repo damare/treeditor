@@ -1,0 +1,15 @@
+.error {
+  color: red;
+}
+
+.tree-container {
+  align-items: center;
+  max-width: 100%;
+}
+
+.tree-element-editor {
+  position: absolute;
+  top: 90px;
+  right: 60px;
+  max-width: 500px;
+}

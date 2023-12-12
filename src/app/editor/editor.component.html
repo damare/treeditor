@@ -1,0 +1,37 @@
+<div>
+  <div class="tree" *ngIf="tree">
+    <h2>Baum Details:</h2>
+    <button type="button" (click)="goBack()">
+      <fa-icon [icon]="faArrowLeft"></fa-icon>
+      zurück
+    </button>
+
+    <span *ngIf="version">
+      Version: {{ version.major }}.{{ version.minor }}
+    </span>
+
+    <app-tree-display></app-tree-display>
+    <app-lost-elements></app-lost-elements>
+
+    <div>
+      <div class="save-tree-form">
+        <div class="save-tree-major">
+          <input
+            type="checkbox"
+            [checked]="isMajor"
+            (change)="isMajor = !isMajor"
+          /><span>als neue Major Version abspeichern</span>
+        </div>
+        <div class="save-tree-creator">
+          <label for="tree-created_by">Baum erstellt von:</label>
+          <input type="text" id="tree-created_by" [(ngModel)]="created_by" />
+        </div>
+      </div>
+      <button type="button" (click)="saveTree()">
+        <fa-icon [icon]="faFloppyDisk"></fa-icon>
+        save tree
+      </button>
+      <span>{{ treesError$ | async }}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<div *ngFor="let elem of lostElements | keyvalue">
+  <p *ngIf="elem.value | isNode">lost node ({{ elem.value.number }})</p>
+  <p *ngIf="!(elem.value | isNode)">lost leaf ({{ elem.value.number }})</p>
+</div>

@@ -144,7 +144,7 @@ export class TreeOut {
   constructor(
     workingTree: WorkingTree | undefined,
     treeElements: Map<number, WorkingNode | WorkingLeaf>,
-    created_by: string | undefined
+    created_by: string | undefined,
   ) {
     if (workingTree) {
       this.kind_of_tree = workingTree.kind_of_tree;

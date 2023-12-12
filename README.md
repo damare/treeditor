@@ -24,7 +24,7 @@ to build a decision tree.
 - npm package manager (usually installed with Node.js)
 
 [Here](https://v15.angular.io/guide/setup-local) you can find the installation
-instructions to set up an Angular environment.
+instructions to set up an Angular environment (currently version 15).
 
 ### How to install and start the treeditor
 

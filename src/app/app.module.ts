@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { treeKindsReducer } from './store/tree-kinds/tree-kinds.reducer';
 import { colorReducer } from './store/colors/colors.reducer';
 import { dataTypesReducer } from './store/data-types/data-types.reducer';
+import { DataTypesComponent } from './data-types/data-types.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { dataTypesReducer } from './store/data-types/data-types.reducer';
     TreesComponent,
     FilterTreeKindsPipe,
     NewTreeKindComponent,
+    DataTypesComponent,
   ],
   imports: [
     BrowserModule,

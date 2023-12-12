@@ -1,0 +1,78 @@
+<div class="data-types-container">
+  <h2>Datentypen</h2>
+  <div class="data-types">
+    <div class="data-type" *ngFor="let elem of dataTypes | keyvalue">
+      <strong
+        >{{ elem.key }} - {{ elem.value.display_name }} ({{
+          elem.value.name
+        }})</strong
+      >
+      <div class="type-property">
+        <i>Art der Daten:</i>
+        <p>{{ dataOptions[elem.value.kind_of_data] }}</p>
+      </div>
+      <div class="type-property">
+        <i>Erklärung:</i>
+        <p class="pull-right">{{ elem.value.explanation }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="new-data-type">
+    <h2>Neuen Datentypen anlegen:</h2>
+    <form #newDataTypeForm="ngForm" (ngSubmit)="onSubmit(newDataTypeForm)">
+      <div class="form-group field-container">
+        <label for="name">Abkürzung: </label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="model.name"
+          name="name"
+        />
+      </div>
+      <div class="form-group field-container">
+        <label for="display_name">Bezeichnung: </label>
+        <input
+          type="text"
+          class="form-control"
+          id="display_name"
+          required
+          [(ngModel)]="model.display_name"
+          name="display_name"
+        />
+      </div>
+      <div class="form-group field-container">
+        <label for="kind_of_data">Art der Daten: </label>
+        <select
+          class="form-control"
+          id="kind_of_data"
+          required
+          [(ngModel)]="model.kind_of_data"
+          name="kind_of_data"
+        >
+          <option value="" disabled selected="selected">Art der Daten</option>
+          <option
+            *ngFor="let element of dataOptions | keyvalue"
+            [ngValue]="element.key"
+          >
+            {{ element.value }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group field-container">
+        <label for="explanation">Erklärung: </label>
+        <input
+          type="text"
+          class="form-control"
+          id="explanation"
+          [(ngModel)]="model.explanation"
+          name="explanation"
+        />
+      </div>
+      <button type="submit" [disabled]="newDataTypeForm.invalid">
+        Speichern
+      </button>
+    </form>
+  </div>
+</div>

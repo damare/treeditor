@@ -1,0 +1,33 @@
+<div class="tree-container">
+  <h2>{{ title }}</h2>
+  <div class="" *ngFor="let kind of treeKinds">
+    <h3>Entscheidungsbaum "{{ kind.name }}"":</h3>
+    <div class="frame" *ngFor="let tree of trees | filterTreeKinds: kind.id">
+      <button routerLink="/editor/{{ kind.id }}/{{ tree.id }}">
+        <div class="title">
+          <span
+            >Version {{ tree.tree_version.major }}.{{
+              tree.tree_version.minor
+            }}</span
+          >
+        </div>
+        <div class="info">
+          <span
+            >created by: <strong>{{ tree.created_by }}</strong></span
+          >
+        </div>
+        <div>
+          <span>id: {{ tree.id }}</span>
+        </div>
+        <span>{{ tree.date_created }}</span>
+      </button>
+    </div>
+    <button
+      routerLink="/editor/{{ kind.id }}/new"
+      (click)="this.onGoToNewTree(kind.id)"
+    >
+      + neuen Baum erstellen
+    </button>
+  </div>
+  <app-new-tree-kind></app-new-tree-kind>
+</div>

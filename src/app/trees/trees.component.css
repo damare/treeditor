@@ -1,0 +1,21 @@
+.tree-container {
+  margin: 1em;
+}
+
+.frame {
+  display: flex;
+  flex-direction: row;
+}
+
+button {
+  text-align: left;
+  margin-bottom: 0.5em;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.title > span {
+  font-size: 1.5em;
+}

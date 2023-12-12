@@ -2,3 +2,30 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.btn-editor {
+    text-decoration: none;
+    padding: 0.5em;
+    margin: 0.5em;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.btn-editor:hover {
+    border: 1px solid #000;
+    background-color: #ddd;;
+}
+
+.mat-form-field-wrapper {
+    padding-bottom: 0.5em !important;
+}

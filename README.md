@@ -48,6 +48,15 @@ Distributed under the BSD-2 License. See `LICENSE` for more information.
 Paula Kammler - [@codingpaula](https://github.com/codingpaula) -
 [paula@kammler.co](mailto:paula@kammler.co)
 
+## Förderhinweis
+
+Gefördert im Rahmen des Forschungsprojekts "IQexpert" durch das BMEL -
+Bundesministerium für Ernährung und Landwirtschaft.
+
+FKZ: 281C202B19
+
+Mehr Informationen hier auf der [Website des dfki][dfki-website].
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # Angular Documentation
@@ -86,3 +95,4 @@ To get more help on the Angular CLI use `ng help` or go check out the
 
 <!-- MARKDOWN LINKS -->
 [treexpert-url]: https://github.com/DFKI-NI/treexpert
+[dfki-website]: https://www.dfki.de/web/forschung/projekte-publikationen/projekt/iqexpert

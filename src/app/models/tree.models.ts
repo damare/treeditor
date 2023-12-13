@@ -79,14 +79,18 @@ export class NodeOut {
     if (workingNode && workingNode.true_explanation != '') {
       this.true_explanation = workingNode.true_explanation;
     }
-    if (workingNode && workingNode.true_color != 0) {
+    if (workingNode && workingNode.true_color && workingNode.true_color != 0) {
       this.true_color_id = workingNode.true_color;
     }
     this.false_number = workingNode.false_number;
     if (workingNode && workingNode.false_explanation != '') {
       this.false_explanation = workingNode.false_explanation;
     }
-    if (workingNode && workingNode.false_color != 0) {
+    if (
+      workingNode &&
+      workingNode.false_color &&
+      workingNode.false_color != 0
+    ) {
       this.false_color_id = workingNode.false_color;
     }
   }
@@ -114,7 +118,7 @@ export class LeafOut {
     this.number = workingLeaf.number;
     this.display_name = workingLeaf.display_name;
     this.result = workingLeaf.result;
-    if (workingLeaf.color && workingLeaf.color != 0) {
+    if (workingLeaf.color && workingLeaf && workingLeaf.color != 0) {
       this.color_id = workingLeaf.color;
     }
   }

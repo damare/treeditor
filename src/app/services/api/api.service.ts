@@ -16,7 +16,7 @@ import { ApiServiceInterface } from './api.service.interface';
   providedIn: 'root',
 })
 export class ApiService implements ApiServiceInterface {
-  baseUrl = 'http://127.0.0.1:8000/iqexpert-api/v1/api';
+  baseUrl = 'http://127.0.0.1:8080/iqexpert-api/v1/api';
   httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) {}
